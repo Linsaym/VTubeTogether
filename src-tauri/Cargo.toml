@@ -1,0 +1,34 @@
+[package]
+name = "vtubetogether"
+version = "0.1.0"
+edition = "2024"
+default-run = "vtubetogether"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+anyhow = "1"
+base64 = "0.22"
+ring = "0.17"
+subtle = "2"
+openh264 = "0.9.8"
+quinn = { version = "0.11", default-features = false, features = ["runtime-tokio", "rustls-ring"] }
+rcgen = { version = "0.14", default-features = false, features = ["crypto", "ring"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std"] }
+serde = { version = "1", features = ["derive"] }
+socket2 = "0.6"
+tauri = { version = "2", features = [] }
+tempfile = "3"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time", "io-util"] }
+tokio-util = "0.7"
+yuv = "0.8"
+windows-capture = "2.0.1"
+windows = { version = "0.62", features = [
+  "Win32_Foundation", "Win32_Graphics_Dwm", "Win32_Graphics_Gdi",
+  "Win32_UI_WindowsAndMessaging"
+] }
+
+[profile.dev.package.openh264]
+opt-level = 3
+
